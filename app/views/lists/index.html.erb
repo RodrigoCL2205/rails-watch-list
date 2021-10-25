@@ -1,0 +1,13 @@
+<%= render 'layouts/banner', test: "Minhas listas", url: image_path('movie.jpg') %>
+
+<div class="container">
+  <div class="cards">
+    <% @lists.each do |list| %>
+      <%= link_to list_path(list) do %>
+        <div class="card-list" style="background-image: url('<%= list.photo_url %>'),  linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));">
+          <%= list.name %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

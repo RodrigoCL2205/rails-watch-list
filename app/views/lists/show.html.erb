@@ -1,0 +1,31 @@
+<%= render 'layouts/banner', test: @list.name, url: @list.photo_url %>
+
+<%# Movie Card %>
+<div class="cards-movie my-4">
+  <% @list.bookmarks.each do |bookmark| %>
+    <div class="card-movie d-flex flex-column">
+      <img src="<%= bookmark.movie.poster_url %>" />
+      <div class="card-movie-infos">
+        <div>
+          <div class="d-flex justify-content-start">
+            <h2><%= bookmark.movie.title %></h2>
+            <p> <%= bookmark.movie.rating %></p>
+          </div>
+          <p><%= bookmark.movie.overview %></p>
+          <div class="card-bookmark align-self-end d-flex justify-content-between align-items-end mt-auto">
+            <h3>"<%= bookmark.comment %>"</h3>
+            <%= link_to bookmark_path(bookmark), method: :delete do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%# Form - Criar Bookmark %>
+
+<div style="margin: 10px 200px">
+  <%= render 'bookmarks/form' %>
+</div>

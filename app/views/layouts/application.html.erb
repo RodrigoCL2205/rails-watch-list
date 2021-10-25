@@ -12,7 +12,45 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="bg-white">
+
+      <%# NAVBAR %>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+        <%= link_to "Whatch List", lists_path, class: "navbar-brand" %>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to "Minhas Listas", lists_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Adicionar lista", new_list_path, class: "nav-link" %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <%# Fim NAVBAR %>
+
+  <div class="container bg-white">
     <%= yield %>
+  </div>
+      <%# Início FOOTER %>
+      <div class="footer">
+        <div class="footer-links">
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      <div class="footer-copyright">
+        Rails Watch List - by Rodrigo Cequeira Lima
+      </div>
+      </div>
+      <%# Fim FOOTER %>
+
   </body>
 </html>

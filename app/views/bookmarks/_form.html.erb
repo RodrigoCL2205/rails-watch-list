@@ -1,0 +1,9 @@
+<%= simple_form_for [@list, @bookmark] do |f| %>
+<%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+<%= f.association :movie, label: "Filme:", collection: Movie.order(:title), prompt: "Escolha o filme" %>
+<%= f.input :comment, label: "Comentário:" %>
+
+<%= f.button :submit, value: "Confirmar", class: 'btn btn-primary' %>
+<% end %>

@@ -3,6 +3,6 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
 <%= f.input :name, label: "Nome:" %>
-<%= f.input :photo_url, label: "Url da foto:" %>
+<%= f.input :photo, as: :file %>
 <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>

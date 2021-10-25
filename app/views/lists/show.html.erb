@@ -1,7 +1,9 @@
-<%= render 'layouts/banner', test: @list.name, url: @list.photo_url %>
+<%= render 'layouts/banner', test: @list.name, url: (cl_image_path @list.photo.key, crop: :fill) %>
+
+<%# <%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
 
 <%# Movie Card %>
-<div class="cards-movie my-4">
+<div class="cards-movie my-4 pb-4 border-bottom">
   <% @list.bookmarks.each do |bookmark| %>
     <div class="card-movie d-flex flex-column">
       <img src="<%= bookmark.movie.poster_url %>" />
@@ -24,8 +26,30 @@
   <% end %>
 </div>
 
+<%# Show do reviews %>
+<div class="border-bottom pb-4 d-flex justify-content-between">
+  <div id="show-review">
+    <h2>Reviews</h2>
+    <ul class="list-group list-group-flush mr-3 ml-auto">
+      <% @list.reviews.each do |review| %>
+        <li class="list-group-item">
+          <% review.rating.times do %>
+            <i class="fas fa-star star-yellow"></i>
+          <% end %>
+          <%= review.comment %>
+        </li>
+      <% end %>
+  </ul>
+  </div>
+
+  <div id="form-review">
+    <%= render "reviews/form" %>
+  </div>
+</div>
+
 <%# Form - Criar Bookmark %>
 
 <div style="margin: 10px 200px">
+<h2>Adicionar Bookmark</h2>
   <%= render 'bookmarks/form' %>
 </div>
